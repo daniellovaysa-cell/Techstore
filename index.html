@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!-- Indica que es HTML5. Siempre primera línea. -->
+ 
+<html lang='es'>
+<!-- Elemento raíz. lang='es' ayuda a lectores de pantalla y buscadores. -->
+ 
+  <head>
+  <!-- Metadatos: el navegador los necesita pero no los muestra al usuario -->
+ 
+    <meta charset='UTF-8'>
+    <!-- Codificación de caracteres: soporta tildes, ñ, emojis -->
+ 
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <!-- Sin esto, en celular la página se ve muy pequeña -->
+ 
+    <title>TechStore - Tu tienda de tecnología</title>
+    <!-- Aparece en la pestaña del navegador y en Google -->
+ 
+    <link rel='stylesheet' href='estilos.css'>
+    <!-- Vincula el archivo CSS. El path es relativo al index.html -->
+    <!-- estilos.css debe estar en la misma carpeta que index.html -->
+  </head>
+ 
+  <body>
+  <!-- Todo lo visible va acá -->
+   <header>
+      <h1>TechStore</h1>
+
+      <nav>
+        <ul>
+          <li><a href='#Inicio'>Inicio</a></li>
+          <li><a href='#Productos'>Productos</a></li>
+          <li><a href='#Contacto'>Contacto</a></li>
+        </ul>
+      </nav>
+   </header>
+
+      <main>  
+        <section id='productos'>
+        <h3>Catalogo de productos</h3>
+        <article>
+          <ul>
+            <li>MacBook Air M2</li>
+            <li>iPhone 15</li>
+          </ul>
+        </article>
+        </section>
+
+        <section id='Ofertas'>
+        <h3>Ofertas y Novedades</h3>
+        <article>
+          <ol>
+            <li>Sony WH-1000XM5</li>
+            <li>LG UltraGear 27GP850</li>
+          </ol>
+        </article>
+        </section>
+        
+      </main>
+
+      <footer>
+        <h6>Lovaysa Daniel 2026</h6>
+      </footer>
+    <script src='js/app.js'></script>
+
+    <!-- JS SIEMPRE al final del body, antes de la etiqueta de cierre -->
+    <!-- Si va en el head, el script corre antes de que exista el HTML -->
+    <!-- y document.getElementById('productos') devuelve null -->
+  </body>
+ 
+</html>
