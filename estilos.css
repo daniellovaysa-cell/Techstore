@@ -1,0 +1,140 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== BODY ===== */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #222;
+}
+
+/* ===== HEADER ===== */
+
+header {
+  background-color: #00226b;
+  color: white;
+  padding: 20px;
+}
+
+header h1 {
+  margin-bottom: 10px;
+}
+
+/* ===== NAV ===== */
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+/* ===== MAIN ===== */
+
+main {
+  padding: 32px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== TITULOS ===== */
+
+section h3 {
+  margin-bottom: 20px;
+}
+
+/* ===== PRODUCTOS ===== */
+
+#productos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+/* ===== TARJETAS ===== */
+
+.tarjeta {
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ===== IMAGEN ===== */
+
+.tarjeta img {
+  width: 250px;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* ===== INFO ===== */
+
+.tarjeta-info {
+  padding: 16px;
+  width: 100%;
+}
+
+.tarjeta-info h3 {
+  margin-bottom: 10px;
+}
+
+/* ===== PRECIO ===== */
+
+.precio {
+  font-size: 22px;
+  font-weight: bold;
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+/* ===== FICHA ===== */
+
+.ficha {
+  margin-bottom: 12px;
+  color: #555;
+}
+
+/* ===== LISTA ===== */
+
+.tarjeta ul {
+  margin-left: 18px;
+  margin-bottom: 15px;
+}
+
+/* ===== BOTON ===== */
+
+.tarjeta button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #2563eb;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tarjeta button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+  background-color: #021775;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  margin-top: 40px;
+}
