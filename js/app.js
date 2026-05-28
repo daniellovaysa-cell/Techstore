@@ -1,145 +1,369 @@
 class Producto {
   #precio;
   #stock;
+ class Producto {
+  #precio;
+  #stock;
+
   constructor(nombre, marca, precio, stock, imagen) {
     this.nombre = nombre;
-    this.marca  = marca;
+    this.marca = marca;
     this.#precio = precio;
     this.#stock = stock;
     this.imagen = imagen;
   }
-  
+
   descripcion() {
     return `${this.nombre} — ${this.marca}`;
   }
- 
+
+  // GETTERS Y SETTERS
+
   get precio() {
     return this.#precio;
   }
-  
+
   set precio(nuevoPrecio) {
     if (nuevoPrecio < 0) {
       console.error('El precio no puede ser negativo.');
       return;
     }
+
     this.#precio = nuevoPrecio;
   }
 
   get stock() {
     return this.#stock;
   }
+
   set stock(nuevoStock) {
     if (nuevoStock < 0) {
       console.error('El stock no puede ser negativo.');
       return;
     }
+
     this.#stock = nuevoStock;
   }
 
   get estaDisponible() {
     return this.#stock > 0;
   }
- 
+
   get precioFormateado() {
     return `$${this.#precio.toLocaleString('es-AR')}`;
   }
- 
+
   resumen() {
-    const disponible = this.estaDisponible ? `${this.#stock} en stock` : 'Sin stock';
+    const disponible = this.estaDisponible
+      ? `${this.#stock} en stock`
+      : 'Sin stock';
+
     return `${this.descripcion()} | ${this.precioFormateado} | ${disponible}`;
   }
 
   fichatecnica() {
-    return `Nombre: ${this.nombre}, marca: ${this.marca}`;
+    return `Nombre: ${this.nombre}, Marca: ${this.marca}`;
   }
 }
 
+// =========================
+// CLASES HIJAS
+// =========================
+
 class Notebook extends Producto {
-  constructor(nombre, marca, precio, stock, imagen, procesador, ramGB, almacenamientoGB) {
+  constructor(
+    nombre,
+    marca,
+    precio,
+    stock,
+    imagen,
+    procesador,
+    ramGB,
+    almacenamientoGB
+  ) {
     super(nombre, marca, precio, stock, imagen);
+
     this.procesador = procesador;
     this.ramGB = ramGB;
     this.almacenamientoGB = almacenamientoGB;
   }
+
   fichatecnica() {
-    return `Nombre: ${this.nombre}, procesador: ${this.procesador}`;
+    return `
+      Procesador: ${this.procesador} |
+      RAM: ${this.ramGB}GB |
+      SSD: ${this.almacenamientoGB}GB
+    `;
   }
 }
 
-class celular extends Producto {
-  constructor(nombre, marca, precio, stock, imagen, pantallaPulgadas, bateriaMah, camaraMp,almacenamientoGB) {
+class Celular extends Producto {
+  constructor(
+    nombre,
+    marca,
+    precio,
+    stock,
+    imagen,
+    pantallaPulgadas,
+    bateriaMah,
+    camaraMp,
+    almacenamientoGB
+  ) {
     super(nombre, marca, precio, stock, imagen);
+
     this.pantallaPulgadas = pantallaPulgadas;
     this.bateriaMah = bateriaMah;
     this.camaraMp = camaraMp;
     this.almacenamientoGB = almacenamientoGB;
   }
+
   fichatecnica() {
-    return `Nombre: ${this.nombre}, pantalla: ${this.pantallaPulgadas} pulgadas`;
+    return `
+      Pantalla: ${this.pantallaPulgadas}" |
+      Cámara: ${this.camaraMp}MP |
+      Almacenamiento: ${this.almacenamientoGB}GB
+    `;
   }
 }
 
-class auricular extends Producto {
-  constructor(nombre, marca, precio, stock, imagen, tipo, wirelles, cancelacionRuido) {
+class Auricular extends Producto {
+  constructor(
+    nombre,
+    marca,
+    precio,
+    stock,
+    imagen,
+    tipo,
+    wireless,
+    cancelacionRuido
+  ) {
     super(nombre, marca, precio, stock, imagen);
+
     this.tipo = tipo;
-    this.wireless = wirelles;
+    this.wireless = wireless;
     this.cancelacionRuido = cancelacionRuido;
   }
+
   fichatecnica() {
-    return `Nombre: ${this.nombre}, tipo: ${this.tipo}`;
+    return `
+      Tipo: ${this.tipo} |
+      Wireless: ${this.wireless ? 'Sí' : 'No'} |
+      Cancelación de ruido: ${this.cancelacionRuido ? 'Sí' : 'No'}
+    `;
   }
 }
 
-class monitor extends Producto {
-  constructor(nombre, marca, precio, stock, imagen, pulgadas, resolucion, panelTipo, hz) {
+class Monitor extends Producto {
+  constructor(
+    nombre,
+    marca,
+    precio,
+    stock,
+    imagen,
+    pulgadas,
+    resolucion,
+    panelTipo,
+    hz
+  ) {
     super(nombre, marca, precio, stock, imagen);
+
     this.pulgadas = pulgadas;
     this.resolucion = resolucion;
     this.panelTipo = panelTipo;
     this.hz = hz;
   }
+
   fichatecnica() {
-    return `Nombre: ${this.nombre}, pulgadas: ${this.pulgadas}`;
+    return `
+      ${this.pulgadas}" |
+      ${this.resolucion} |
+      ${this.hz}Hz
+    `;
   }
 }
+
 class PCEscritorio extends Producto {
-  constructor(nombre, marca, precio, stock, imagen, procesador, ramGB, almacenamientoGB, placaVideo,fuenteW) {
+  constructor(
+    nombre,
+    marca,
+    precio,
+    stock,
+    imagen,
+    procesador,
+    ramGB,
+    almacenamientoGB,
+    placaVideo,
+    fuenteW
+  ) {
     super(nombre, marca, precio, stock, imagen);
+
     this.procesador = procesador;
     this.ramGB = ramGB;
     this.almacenamientoGB = almacenamientoGB;
     this.placaVideo = placaVideo;
     this.fuenteW = fuenteW;
   }
+
   fichatecnica() {
-    return `Nombre: ${this.nombre}, RAM: ${this.ramGB} GB`;
+    return `
+      CPU: ${this.procesador} |
+      RAM: ${this.ramGB}GB |
+      GPU: ${this.placaVideo}
+    `;
   }
 }
 
+// =========================
+// CATÁLOGO
+// =========================
 
-// ── Catálogo de productos ────────────────────────────────────
-// Array global — definido fuera de cualquier función o clase
 const catalogo = [
-  new Producto(
-    'MacBook Air M2', 'Apple', 2100000, 4,
-    'https://images.unsplash.com/photo-1611186871525-5a0c4f200c34?w=400'
+  new Notebook(
+    'MacBook Air M2',
+    'Apple',
+    2100000,
+    4,
+    'https://techcrunch.com/wp-content/uploads/2022/07/CMC_1580.jpg?w=1024',
+    'Apple M2',
+    8,
+    256
   ),
-  new Producto(
-    'iPhone 15', 'Apple', 1650000, 12,
-    'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400'
+
+  new Celular(
+    'iPhone 15',
+    'Apple',
+    1650000,
+    12,
+    'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400',
+    6.1,
+    4200,
+    48,
+    256
   ),
-  new Producto(
-    'Sony WH-1000XM5', 'Sony', 420000, 0,
-    'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=400'
+
+  new Auricular(
+    'Sony WH-1000XM5',
+    'Sony',
+    420000,
+    0,
+    'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=400',
+    'Over Ear',
+    true,
+    true
   ),
-  new Producto(
-    'LG UltraGear 27GP850', 'LG', 480000, 6,
-    'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400'
+
+  new Monitor(
+    'LG UltraGear 27GP850',
+    'LG',
+    480000,
+    6,
+    'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400',
+    27,
+    '2560x1440',
+    'IPS',
+    165
   ),
-  new Producto(
-    'PC Gamer Entry Level', 'Armada', 1200000, 5,
-    'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=400'
-  ),
+
+  new PCEscritorio(
+    'PC Gamer Entry',
+    'Armada',
+    1200000,
+    5,
+    'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=400',
+    'Ryzen 5 5600',
+    16,
+    1000,
+    'RTX 4060',
+    650
+  )
 ];
+
+// =========================
+// CREAR TARJETA
+// =========================
+
+function crearTarjeta(producto) {
+
+  // CONTENEDOR PRINCIPAL
+
+  const article = document.createElement('article');
+  article.className = 'tarjeta';
+
+  // IMAGEN
+
+  const img = document.createElement('img');
+  img.src = producto.imagen;
+  img.alt = producto.nombre;
+
+  // NOMBRE
+
+  const h3 = document.createElement('h3');
+  h3.textContent = producto.nombre;
+
+  // PRECIO
+
+  const precio = document.createElement('p');
+  precio.className = 'precio';
+  precio.textContent = producto.precioFormateado;
+
+  // FICHA TÉCNICA
+
+  const ficha = document.createElement('p');
+  ficha.className = 'ficha';
+  ficha.textContent = producto.fichatecnica();
+
+  // LISTA
+
+  const ul = document.createElement('ul');
+
+  const liMarca = document.createElement('li');
+  liMarca.textContent = `Marca: ${producto.marca}`;
+
+  const liStock = document.createElement('li');
+
+  liStock.textContent = producto.estaDisponible
+    ? `Stock: ${producto.stock} unidades`
+    : 'Sin stock';
+
+  ul.appendChild(liMarca);
+  ul.appendChild(liStock);
+
+  // BOTÓN
+
+  const btn = document.createElement('button');
+
+  btn.textContent = producto.estaDisponible
+    ? 'Agregar al carrito'
+    : 'Sin stock';
+
+  btn.disabled = !producto.estaDisponible;
+
+  // INFO
+
+  const info = document.createElement('div');
+  info.className = 'tarjeta-info';
+
+  info.appendChild(h3);
+  info.appendChild(precio);
+  info.appendChild(ficha);
+  info.appendChild(ul);
+  info.appendChild(btn);
+
+  // ARMADO FINAL
+
+  article.appendChild(img);
+  article.appendChild(info);
+
+  return article;
+}
+
+// =========================
+// INSERTAR PRODUCTOS
+// =========================
+
+const contenedor = document.getElementById('productos');
+
+catalogo.forEach(producto => {
+  contenedor.appendChild(crearTarjeta(producto));
+});
 
