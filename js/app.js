@@ -1,9 +1,6 @@
 class Producto {
   #precio;
   #stock;
- class Producto {
-  #precio;
-  #stock;
 
   constructor(nombre, marca, precio, stock, imagen) {
     this.nombre = nombre;
@@ -17,7 +14,6 @@ class Producto {
     return `${this.nombre} — ${this.marca}`;
   }
 
-  // GETTERS Y SETTERS
 
   get precio() {
     return this.#precio;
@@ -66,9 +62,6 @@ class Producto {
   }
 }
 
-// =========================
-// CLASES HIJAS
-// =========================
 
 class Notebook extends Producto {
   constructor(
@@ -213,9 +206,6 @@ class PCEscritorio extends Producto {
   }
 }
 
-// =========================
-// CATÁLOGO
-// =========================
 
 const catalogo = [
   new Notebook(
@@ -275,60 +265,96 @@ const catalogo = [
     1000,
     'RTX 4060',
     650
-  )
+  ),
+
+  new Notebook(
+  'Lenovo IdeaPad 3',
+  'Lenovo',
+  850000,
+  7,
+  'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400',
+  'Ryzen 5 5500U',
+  8,
+  512
+),
+
+new Celular(
+  'Samsung Galaxy S24',
+  'Samsung',
+  1450000,
+  10,
+  'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400',
+  6.2,
+  4000,
+  50,
+  256
+),
+
+new Auricular(
+  'JBL Tune 720BT',
+  'JBL',
+  160000,
+  15,
+  'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400',
+  'Over Ear',
+  true,
+  false
+),
+
+new Monitor(
+  'Samsung Odyssey G5',
+  'Samsung',
+  520000,
+  4,
+  'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400',
+  27,
+  '2560x1440',
+  'VA',
+  144
+)
 ];
 
-// =========================
-// CREAR TARJETA
-// =========================
 
 function crearTarjeta(producto) {
 
-  // CONTENEDOR PRINCIPAL
 
   const article = document.createElement('article');
   article.className = 'tarjeta';
 
-  // IMAGEN
 
   const img = document.createElement('img');
   img.src = producto.imagen;
   img.alt = producto.nombre;
 
-  // NOMBRE
 
   const h3 = document.createElement('h3');
   h3.textContent = producto.nombre;
 
-  // PRECIO
 
   const precio = document.createElement('p');
   precio.className = 'precio';
   precio.textContent = producto.precioFormateado;
 
-  // FICHA TÉCNICA
 
   const ficha = document.createElement('p');
   ficha.className = 'ficha';
   ficha.textContent = producto.fichatecnica();
 
-  // LISTA
 
   const ul = document.createElement('ul');
 
   const liMarca = document.createElement('li');
   liMarca.textContent = `Marca: ${producto.marca}`;
-
+liMarca.className='marcas'
   const liStock = document.createElement('li');
 
   liStock.textContent = producto.estaDisponible
     ? `Stock: ${producto.stock} unidades`
     : 'Sin stock';
-
+  liStock.className='cantidad'
   ul.appendChild(liMarca);
   ul.appendChild(liStock);
 
-  // BOTÓN
 
   const btn = document.createElement('button');
 
@@ -338,7 +364,6 @@ function crearTarjeta(producto) {
 
   btn.disabled = !producto.estaDisponible;
 
-  // INFO
 
   const info = document.createElement('div');
   info.className = 'tarjeta-info';
@@ -349,7 +374,6 @@ function crearTarjeta(producto) {
   info.appendChild(ul);
   info.appendChild(btn);
 
-  // ARMADO FINAL
 
   article.appendChild(img);
   article.appendChild(info);
@@ -357,9 +381,6 @@ function crearTarjeta(producto) {
   return article;
 }
 
-// =========================
-// INSERTAR PRODUCTOS
-// =========================
 
 const contenedor = document.getElementById('productos');
 
