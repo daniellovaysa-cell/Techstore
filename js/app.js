@@ -388,3 +388,9 @@ catalogo.forEach(producto => {
   contenedor.appendChild(crearTarjeta(producto));
 });
 
+
+
+catalogo.forEach(producto => {
+  contenedor.appendChild(crearTarjeta(producto));
+});
+
