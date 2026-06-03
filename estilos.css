@@ -70,7 +70,7 @@ section h3 {
 
 
 .tarjeta img {
-  width: 310px;
+  width: 100px;
   height: 200px;
   object-fit: cover;
 }
@@ -95,7 +95,7 @@ section h3 {
 
 
 .ficha {
-  margin-bottom: px;
+  margin-bottom: 10px;
   color: #555;
 }
 
@@ -120,6 +120,14 @@ section h3 {
   cursor: not-allowed;
 }
 
+.tarjeta button:hover {
+  background-color: #1d4ed8; 
+}
+
+.tarjeta button:active {
+  transform: scale(0.98);
+}
+
 
 footer {
   background-color: #021775;
@@ -140,5 +148,134 @@ list-style: none;
 .tamañofooter {
   font-size: 30px;
 }
+
+#Ofertas {
+  margin-top: 40px;
+}
+
+.ofertas-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.oferta {
+  background-color: white;
+  padding: 20px;
+  width: 280px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.oferta span {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: #facc15;
+  color: #222;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+
+/* ===== Ajustes para que las imágenes no se corten ===== */
+.tarjeta img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  background-color: #f8f8f8;
+  padding: 10px;
+}
+
+/* ===== Navegación ===== */
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Formularios ===== */
+.formulario-seccion {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.formulario-seccion h2 {
+  margin-bottom: 20px;
+  color: #00226b;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo label {
+  font-weight: bold;
+}
+
+.campo input,
+.campo textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.campo textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.btn-formulario,
+form button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: #2563eb;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.btn-formulario:hover,
+form button[type="submit"]:hover {
+  background-color: #1d4ed8;
+}
+
+.link-pie {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.link-pie a {
+  color: #2563eb;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.mensaje-error {
+  color: #dc2626;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.vamosifunciona {
+  margin-bottom: 40px;
+}
+
+
 
 
