@@ -69,13 +69,6 @@ section h3 {
 }
 
 
-.tarjeta img {
-  width: 100px;
-  height: 200px;
-  object-fit: cover;
-}
-
-
 .tarjeta-info {
   padding: 16px;
   width: 100%;
@@ -186,6 +179,7 @@ list-style: none;
   object-fit: contain;
   background-color: #f8f8f8;
   padding: 10px;
+  display: block;
 }
 
 /* ===== Navegación ===== */
