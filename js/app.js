@@ -390,7 +390,4 @@ catalogo.forEach(producto => {
 
 
 
-catalogo.forEach(producto => {
-  contenedor.appendChild(crearTarjeta(producto));
-});
 
