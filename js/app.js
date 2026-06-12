@@ -207,8 +207,3 @@ class PCEscritorio extends Producto {
     `;
   }
 }
-
-
-
-
-
